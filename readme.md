@@ -46,7 +46,7 @@
 	make all
 
 [chocolatey]: https://chocolatey.org/
-[signcode]: https://www.microsoft.com/en-us/Typography/DigitalSignaturesDefault.aspx
+[signcode]: https://www.microsoft.com/en-us/Typography/dsigningtool.aspx
 [signcode-pwd]: http://www.stephan-brenner.com/?page_id=9
 [CygWin]: http://cygwin.com/install.html "Cygwin"
 [GitVersion]: https://github.com/GitTools/GitVersion

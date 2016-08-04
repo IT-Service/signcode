@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>signcode.install</id>
+    <version>$version$</version>
+    <title>SignCode (Install)</title>
+    <authors>Microsoft Corporation, Stephan Brenner</authors>
+    <owners>Sergey S. Betke</owners>
+    <projectUrl>https://www.microsoft.com/en-us/Typography/dsigningtool.aspx</projectUrl>
+    <packageSourceUrl>https://github.com/IT-Service/signcode/</packageSourceUrl>
+    <docsUrl>https://github.com/IT-Service/signcode/wiki</docsUrl>
+    <bugTrackerUrl>https://github.com/IT-Service/signcode/issues</bugTrackerUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+SignCode Microsoft tool for open type font signing.
+With signcode-pwd tool for signing in batch mode.
+    </description>
+    <summary>SignCode Microsoft tool for open type font signing</summary>
+    <releaseNotes>
+All release notes can be found on the GitHub site - https://github.com/IT-Service/signcode/releases
+    </releaseNotes>
+    <tags>admin signcode signcode-pwd</tags>
+    <dependencies>
+    </dependencies>	
+  </metadata>
+  <files>
+    <file src="chocolatey*.ps1" target="tools"/>
+  </files>  
+</package>
