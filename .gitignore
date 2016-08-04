@@ -1,0 +1,9 @@
+obj
+release
+bin
+_output
+make.log
+build.log
+.vs
+packages
+ReleaseNotes.md
