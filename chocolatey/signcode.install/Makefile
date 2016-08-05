@@ -31,7 +31,7 @@ $(eval $(foreach file,$(FILES_FOR_SIGNING),\
     cp -f $(file) -t $(AUXDIR); \
     $$(call SIGN,$(AUXDIR)/$(notdir $(file))); \
     $$(call SIGNTEST,$(AUXDIR)/$(notdir $(file))),\
-    $(file) \
+    $(file) $(CODE_SIGNING_CERTIFICATE_PVK) $(CODE_SIGNING_CERTIFICATE_SPC) \
   )\
 ))
 
