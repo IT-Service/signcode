@@ -7,7 +7,11 @@ include $(ITG_MAKEUTILS_DIR)/appveyor.mk
 
 CHOCO_PACKAGE_NAME = signcode.install
 
-$(eval $(call packChocoMSIPackage,PACKAGE_,$(CHOCO_PACKAGE_NAME),,$(MajorMinorPatch),$(PreReleaseLabel)))
+$(eval $(call packChocoWebPackage,PACKAGE_,$(CHOCO_PACKAGE_NAME),\
+  $(MajorMinorPatch),\
+  $(PreReleaseLabel),\
+  $(wildcard $(SOURCESDIR)/$(CHOCO_PACKAGE_NAME)/*.ignore)\
+))
 
 all: package
 package: $(PACKAGE_TARGETS)
