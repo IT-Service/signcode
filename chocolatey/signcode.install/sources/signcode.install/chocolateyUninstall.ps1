@@ -7,7 +7,7 @@ $exitCode = Start-ChocolateyProcessAsAdmin `
     -statements @"
         `$DsigDllInstallFolder = [Environment]::GetFolderPath([Environment+SpecialFolder]::SystemX86);
         & `$DsigDllInstallFolder\regsvr32 /u /s mssipotf.dll | Out-String | Write-Verbose;
-        Remove-Item -LiteralPath ( Join-Path -Path $toolsDir -ChildPath 'mssipotf.dll' ) -Force;
+        Remove-Item -LiteralPath ( Join-Path -Path '$toolsDir' -ChildPath 'mssipotf.dll' ) -Force;
 "@ `
     -noSleep `
 ;

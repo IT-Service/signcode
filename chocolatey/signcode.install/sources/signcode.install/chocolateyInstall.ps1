@@ -19,7 +19,7 @@ Install-ChocolateyZipPackage @packageArgs;
 $exitCode = Start-ChocolateyProcessAsAdmin `
     -statements @"
         `$DsigDllInstallFolder = [Environment]::GetFolderPath([Environment+SpecialFolder]::SystemX86);
-        Copy-Item -LiteralPath ( Join-Path -Path $toolsDir -ChildPath 'mssipotf.dll' ) -Destination `$DsigDllInstallFolder -Force;
+        Copy-Item -LiteralPath ( Join-Path -Path '$toolsDir' -ChildPath 'mssipotf.dll' ) -Destination `$DsigDllInstallFolder -Force;
         & `$DsigDllInstallFolder\regsvr32 /s mssipotf.dll | Out-String | Write-Verbose;
 "@ `
     -noSleep `
