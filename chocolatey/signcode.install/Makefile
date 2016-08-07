@@ -12,6 +12,7 @@ $(eval $(call packChocoWebPackage,PACKAGE_,$(CHOCO_PACKAGE_NAME),\
   $(MajorMinorPatch),\
   $(PreReleaseLabel),\
   $(wildcard $(SOURCESDIR)/$(CHOCO_PACKAGE_NAME)/*.ignore)\
+  $(SOURCESDIR)/$(CHOCO_PACKAGE_NAME)/signcodepwd.cmd \
 ))
 
 FILES_FOR_SIGNING := $(wildcard tests/*.ttf)
