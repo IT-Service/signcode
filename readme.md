@@ -1,4 +1,6 @@
-﻿Пакет chocolatey для установки средств подписи шрифтов
+﻿[![Build status](https://ci.appveyor.com/api/projects/status/47ga775dxwnopruv/branch/master?svg=true)](https://ci.appveyor.com/project/sergey-s-betke/signcode)
+
+Пакет chocolatey для установки средств подписи шрифтов
 ======================================================
 
 Репозиторий содержит проект для сборки пакета signcode.install для chocolatey.
@@ -9,6 +11,7 @@
 
 - [signcode][] - утилиту от Microsoft с библиотекой подписи шрифтов
 - [signcode-pwd][] - утилиту от Stephan Brenner для передачи signcode пароля к сертификату в пакетном режиме
+- signcodepwd - см. далее
 
 Пакет доступен [в репозитории chocolatey](https://chocolatey.org/packages/signcode.install). 
 
@@ -20,7 +23,7 @@
 
 - `signcode.exe`
 - `signcode-pwd.exe`
-- `signcode.bat`
+- `signcodepwd.exe`
 
 Последний пакетный файл в дополнение к параметрам signcode.exe позволяет указать пароль к сертификату
 в форме `-p password`.
