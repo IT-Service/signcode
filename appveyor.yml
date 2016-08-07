@@ -34,13 +34,13 @@ deploy:
   - provider: Environment
     name: GitHub-Releases
     description: $(release_description)
-    artifact: signcode.install
+    artifact: package
     on:
       branch: master
       #appveyor_repo_tag: true
   - provider: Environment
     name: Chocolatey
-    artifact: signcode.install
+    artifact: package
     on:
       branch: master
       #appveyor_repo_tag: true
