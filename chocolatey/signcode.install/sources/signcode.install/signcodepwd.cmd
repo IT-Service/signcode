@@ -7,41 +7,57 @@ set CODE_SIGNING_DLL=mssipotf.dll
 set SIGNCODEPASSWORD=%CODE_SIGNING_CERTIFICATE_PASSWORD%
 
 :parseargs
-if "%~1"=="" goto endparseargs
+if "%~1"=="" goto :endparseargs
+if "%~1"=="-h" (
+:help
+  echo Parameters -spc, -v, -t, -j, -p and filename for signing expected.
+  exit /b -1
+)
+if "%~1"=="/?" goto :help
+if "%~1"=="-?" goto :help
+if "%~1"=="-help" goto :help
+if "%~1"=="--help" goto :help
 if "%~1"=="-spc" (
   set CODE_SIGNING_CERTIFICATE_SPC=%~2
   shift
   shift
-  goto parseargs
+  goto :parseargs
 )
 if "%~1"=="-v" (
   set CODE_SIGNING_CERTIFICATE_PVK=%~2
   shift
   shift
-  goto parseargs
+  goto :parseargs
 )
 if "%~1"=="-t" (
   set CODE_TIMESTAMP_URL=%~2
   shift
   shift
-  goto parseargs
+  goto :parseargs
 )
 if "%~1"=="-j" (
   set CODE_SIGNING_DLL=%~2
   shift
   shift
-  goto parseargs
+  goto :parseargs
 )
 if "%~1"=="-p" (
   set SIGNCODEPASSWORD=%~2
   shift
   shift
-  goto parseargs
+  goto :parseargs
 )
 set FILEFORSIGNING=%~1
 shift
-goto parseargs
+goto :parseargs
 :endparseargs
+
+if "%CODE_SIGNING_CERTIFICATE_SPC%"=="" goto :help
+if "%CODE_SIGNING_CERTIFICATE_PVK%"=="" goto :help
+if "%CODE_TIMESTAMP_URL%"=="" goto :help
+if "%CODE_SIGNING_DLL%"=="" goto :help
+if "%SIGNCODEPASSWORD%"=="" goto :help
+if "%FILEFORSIGNING%"=="" goto :help
 
 for %%A in ("%FILEFORSIGNING%") do set TMPFILE="%TMP%\%%~nxA"
 
@@ -55,7 +71,7 @@ set /a i=10
     -j "%CODE_SIGNING_DLL%" ^
     "%FILEFORSIGNING%"
   set exitcode=%errorlevel%
-  if %errorlevel%==0 goto :beforetimestamp
+  if %exitcode%==0 goto :beforetimestamp
   copy /Y "%TMPFILE%" "%FILEFORSIGNING%"
   set /a i-=1
   if %i% gtr 0 goto :signingloopbegin
@@ -71,7 +87,7 @@ set /a i=10
     -t "%CODE_TIMESTAMP_URL%" ^
     "%FILEFORSIGNING%"
   set exitcode=%errorlevel%
-  if %errorlevel%==0 goto :timestamploopend
+  if %exitcode%==0 goto :timestamploopend
   copy /Y "%TMPFILE%" "%FILEFORSIGNING%"
   set /a i-=1
   if %i% gtr 0 goto :timestamploopbegin
