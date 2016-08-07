@@ -24,3 +24,8 @@ $exitCode = Start-ChocolateyProcessAsAdmin `
 "@ `
     -noSleep `
 ;
+
+Install-BinFile `
+    -name 'signcodepwd' `
+    -path ( Join-Path -Path $toolsDir -ChildPath 'signcodepwd.cmd' ) `
+;
