@@ -1,4 +1,4 @@
-REM @echo off
+@echo off
 setlocal enableextensions enabledelayedexpansion
 set SIGNCODEPWD=signcode-pwd.exe
 set SIGNCODE=signcode.exe
