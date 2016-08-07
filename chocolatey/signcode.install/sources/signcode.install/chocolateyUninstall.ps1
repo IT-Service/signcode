@@ -12,6 +12,11 @@ $exitCode = Start-ChocolateyProcessAsAdmin `
     -noSleep `
 ;
 
+Uninstall-BinFile `
+    -name 'signcodepwd' `
+    -path ( Join-Path -Path $toolsDir -ChildPath 'signcodepwd.cmd' ) `
+;
+
 $packageArgs = @{
   packageName   = $packageName;
   zipFileName   = 'Dsig.EXE';
