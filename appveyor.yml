@@ -37,10 +37,10 @@ deploy:
     artifact: package
     on:
       branch: master
-      appveyor_repo_tag: true
+      #appveyor_repo_tag: true
   - provider: Environment
     name: Chocolatey
     artifact: package
     on:
       branch: master
-      appveyor_repo_tag: true
+      #appveyor_repo_tag: true
