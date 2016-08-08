@@ -25,12 +25,11 @@ Get-ChocolateyUnzip `
     -destination $toolsDir `
 ;
 
-$packageArgs = @{
-  packageName   = $packageName;
-  unzipLocation = $toolsDir;
-  url           = $signcodePwdUrl;
-}
-Install-ChocolateyZipPackage @packageArgs;
+Install-ChocolateyZipPackage `
+    -packageName $packageName `
+    -unzipLocation $toolsDir `
+    -url $signcodePwdUrl `
+;
 
 $exitCode = Start-ChocolateyProcessAsAdmin `
     -statements @"
