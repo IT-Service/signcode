@@ -14,14 +14,14 @@ if ( $env:chocolateyPackageVersion -ne $null ) {
 if ( ![System.IO.Directory]::Exists($tempDir) ) { [System.IO.Directory]::CreateDirectory($tempDir) | Out-Null; };
 $filePath = Join-Path -Path $tempDir -ChildPath 'Dsig.zip';
   
-$filePath = Get-ChocolateyWebFile `
+Get-ChocolateyWebFile `
     -packageName $packageName `
     -fileFullPath $filePath `
     -url $DSigUrl `
 ;
 Get-ChocolateyUnzip `
     -packageName $packageName `
-    -fileFullPath "$filePath" `
+    -fileFullPath $filePath `
     -destination $toolsDir `
 ;
 
