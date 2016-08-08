@@ -19,9 +19,7 @@ Uninstall-BinFile `
 
 $packageArgs = @{
   packageName   = $packageName;
-  zipFileName   = 'Dsig.EXE';
+  zipFileName   = 'signcode-pwd_1_02.zip';
 }
-#Uninstall-ChocolateyZipPackage @packageArgs;
 
-$packageArgs.zipFileName = 'signcode-pwd_1_02.zip';
 #Uninstall-ChocolateyZipPackage @packageArgs;
