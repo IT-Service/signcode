@@ -8,7 +8,7 @@ include $(ITG_MAKEUTILS_DIR)/appveyor.mk
 
 CHOCO_PACKAGE_NAME = signcode.install
 
-$(eval $(call packChocoWebPackage,PACKAGE_,$(CHOCO_PACKAGE_NAME),\
+$(eval $(call packChocoWebPackage,package,$(CHOCO_PACKAGE_NAME),\
   $(MajorMinorPatch),\
   $(PreReleaseLabel),\
   $(wildcard $(SOURCESDIR)/$(CHOCO_PACKAGE_NAME)/*.ignore)\
@@ -18,13 +18,10 @@ $(eval $(call packChocoWebPackage,PACKAGE_,$(CHOCO_PACKAGE_NAME),\
 FILES_FOR_SIGNING := $(wildcard tests/*.ttf)
 
 all: package
-package: $(PACKAGE_TARGETS)
+package: $(packageTARGETS)
 	$(pushDeploymentArtifact)
 
-$(eval $(call defineTest,install,package,\
-  $(CHOCO) install $(CHOCO_PACKAGE_NAME) --force --confirm -pre --source "$$(<D)", \
-  $(PACKAGE_TARGETS) \
-))
+$(eval $(call defineInstallTestForChocoPackage,package,$(CHOCO_PACKAGE_NAME)))
 
 $(eval $(foreach file,$(FILES_FOR_SIGNING),\
   $(call defineTest,sign_ttf,package,\
@@ -36,7 +33,4 @@ $(eval $(foreach file,$(FILES_FOR_SIGNING),\
   )\
 ))
 
-$(eval $(call defineTest,uninstall,package,\
-  $(CHOCO) uninstall $(CHOCO_PACKAGE_NAME) --confirm, \
-  $(PACKAGE_TARGETS) \
-))
+$(eval $(call defineUninstallTestForChocoPackage,package,$(CHOCO_PACKAGE_NAME)))
