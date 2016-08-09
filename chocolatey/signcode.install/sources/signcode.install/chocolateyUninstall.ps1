@@ -12,7 +12,8 @@ $exitCode = Start-ChocolateyProcessAsAdmin `
     -noSleep `
 ;
 
-Uninstall-BinFile `
+#Uninstall-BinFile
+Remove-BinFile `
     -name 'signcodepwd' `
     -path ( Join-Path -Path $toolsDir -ChildPath 'signcodepwd.cmd' ) `
 ;
