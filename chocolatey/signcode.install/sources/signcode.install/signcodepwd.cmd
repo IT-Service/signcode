@@ -61,11 +61,11 @@ if "%FILEFORSIGNING%"=="" goto :help
 
 for %%A in ("%FILEFORSIGNING%") do set TMPFILE="%TMP%\%%~nxA"
 
-copy /Y "%FILEFORSIGNING%" "%TMPFILE%"
+copy /Y "%FILEFORSIGNING%" "%TMPFILE%" 1>NUL
 @echo on
 "%SIGNCODEPWD%" -m %SIGNCODEPASSWORD%
 @echo off
-set /a i=10
+set /a i=30
 :signingloopbegin
   @echo on
   "%SIGNCODE%" ^
@@ -76,15 +76,15 @@ set /a i=10
   @set exitcode=%errorlevel%
   @echo off
   if %exitcode%==0 goto :beforetimestamp
-  copy /Y "%TMPFILE%" "%FILEFORSIGNING%"
+  copy /Y "%TMPFILE%" "%FILEFORSIGNING%" 1>NUL
   set /a i-=1
   if %i% gtr 0 goto :signingloopbegin
 :signingloopend
 goto :beforeexit
 
 :beforetimestamp
-copy /Y "%FILEFORSIGNING%" "%TMPFILE%"
-set /a i=10
+copy /Y "%FILEFORSIGNING%" "%TMPFILE%" 1>NUL
+set /a i=30
 :timestamploopbegin
   @echo on
   "%SIGNCODE%" ^
@@ -94,7 +94,7 @@ set /a i=10
   @set exitcode=%errorlevel%
   @echo off
   if %exitcode%==0 goto :timestamploopend
-  copy /Y "%TMPFILE%" "%FILEFORSIGNING%"
+  copy /Y "%TMPFILE%" "%FILEFORSIGNING%" 1>NUL
   set /a i-=1
   if %i% gtr 0 goto :timestamploopbegin
 :timestamploopend
