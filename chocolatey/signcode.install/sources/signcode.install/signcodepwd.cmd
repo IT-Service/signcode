@@ -62,7 +62,7 @@ if "%FILEFORSIGNING%"=="" goto :help
 for %%A in ("%FILEFORSIGNING%") do set TMPFILE="%TMP%\%%~nxA"
 
 copy /Y "%FILEFORSIGNING%" "%TMPFILE%" 1>NUL
-@echo on
+@REM echo on
 "%SIGNCODEPWD%" -m %SIGNCODEPASSWORD%
 @echo off
 set /a i=30
@@ -100,7 +100,7 @@ set /a i=30
 :timestamploopend
 
 :beforeexit
-@echo on
+@REM echo on
 "%SIGNCODEPWD%" -t
 @REM @del /F /Q "%TMPFILE%"
 @exit /b %exitcode%
