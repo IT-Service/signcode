@@ -14,9 +14,7 @@ install:
   - ps: .\install.ps1 -ErrorAction Stop -InformationAction Continue -Verbose
 
 build_script:
-  - cmd: echo %PATH%
   - cmd: set PATH=%PATH%;%ProgramFiles%/AppVeyor/BuildAgent
-  - cmd: echo %PATH%
   - cmd: make
 
 before_test: 
