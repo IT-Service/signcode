@@ -1,11 +1,6 @@
 image: WMF 5
 version: 1.0.0 (Build {build})
 
-init:
-  - cmd: echo %PATH%
-  - cmd: set PATH=%PATH%;%ProgramFiles%/AppVeyor/BuildAgent
-  - cmd: echo %PATH%
-
 branches:
   except:
     - /^modules\/.*$/
@@ -15,6 +10,9 @@ install:
   - ps: .\install.ps1 -ErrorAction Stop -InformationAction Continue -Verbose
 
 build_script:
+  - cmd: echo %PATH%
+  - cmd: set PATH=%PATH%;%ProgramFiles%/AppVeyor/BuildAgent
+  - cmd: echo %PATH%
   - cmd: make
 
 before_test: 
