@@ -11,7 +11,6 @@ CHOCO_PACKAGE_NAME = signcode.install
 $(eval $(call packChocoWebPackage,package,$(CHOCO_PACKAGE_NAME),\
   $(MajorMinorPatch),\
   $(PreReleaseLabel),\
-  $(wildcard $(SOURCESDIR)/$(CHOCO_PACKAGE_NAME)/*.ignore)\
   $(SOURCESDIR)/$(CHOCO_PACKAGE_NAME)/signcodepwd.cmd \
 ))
 
