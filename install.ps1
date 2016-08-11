@@ -98,6 +98,8 @@ if ( -not ( $env:APPVEYOR -eq 'True' ) ) {
 
 };
 
+& choco install checksum --confirm --failonstderr | Out-String -Stream | Write-Verbose;
+
 & choco install cygwin --confirm --failonstderr | Out-String -Stream | Write-Verbose;
 $env:CygWin = Get-ItemPropertyValue `
     -Path HKLM:\SOFTWARE\Cygwin\setup `
