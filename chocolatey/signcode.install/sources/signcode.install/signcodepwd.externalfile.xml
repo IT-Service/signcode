@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <files>
+    <file fileid="signcodepwd" filename="signcode-pwd.zip" target="tools" url="http://www.stephan-brenner.com/downloads/signcode-pwd/signcode-pwd_1_02.zip"/>
+  </files>  
+</package>

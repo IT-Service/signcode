@@ -11,15 +11,7 @@ CHOCO_PACKAGE_NAME = signcode.install
 $(eval $(call packChocoWebPackage,package,$(CHOCO_PACKAGE_NAME),\
   $(MajorMinorPatch),\
   $(PreReleaseLabel),\
-  $(wildcard $(SOURCESDIR)/$(CHOCO_PACKAGE_NAME)/*.ignore)\
   $(SOURCESDIR)/$(CHOCO_PACKAGE_NAME)/signcodepwd.cmd \
-))
-
-$(eval $(call defineChocoPackageWebFile,package,$(CHOCO_PACKAGE_NAME),\
-  $(SOURCESDIR)/$(CHOCO_PACKAGE_NAME)/dsig.externalfile.xml \
-))
-$(eval $(call defineChocoPackageWebFile,package,$(CHOCO_PACKAGE_NAME),\
-  $(SOURCESDIR)/$(CHOCO_PACKAGE_NAME)/signcode-pwd.externalfile.xml \
 ))
 
 FILES_FOR_SIGNING := $(wildcard tests/*.ttf)
