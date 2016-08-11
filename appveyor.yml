@@ -2,7 +2,7 @@ image: WMF 5
 version: 1.0.0 (Build {build})
 
 environment: 
-  APPVEYORTOOL: \"C:\Program Files\AppVeyor\BuildAgent\appveyor.exe\"
+  APPVEYORTOOL: C:\Program Files\AppVeyor\BuildAgent\appveyor.exe
 
 branches:
   except:
