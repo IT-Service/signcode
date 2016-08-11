@@ -70,38 +70,35 @@ $ToPath = @();
 
 Import-Module -Name PackageManagement;
 
+$null = Install-PackageProvider -Name NuGet -Force;
+$null = Import-PackageProvider -Name NuGet -Force;
+$null = (
+    Get-PackageSource -ProviderName NuGet `
+    | Set-PackageSource -Trusted `
+);
 $null = Install-PackageProvider -Name Chocolatey -Force;
 $null = Import-PackageProvider -Name Chocolatey -Force;
 $null = (
     Get-PackageSource -ProviderName Chocolatey `
     | Set-PackageSource -Trusted `
 );
+$null = Install-Package -Name chocolatey -MinimumVersion 0.9.10.3 -ProviderName Chocolatey;
+$null = Import-PackageProvider -Name Chocolatey -Force;
 $null = (
-    Get-PackageSource -ProviderName NuGet `
+    Get-PackageSource -ProviderName Chocolatey `
     | Set-PackageSource -Trusted `
 );
-$ToPath += "$env:ChocolateyPath\bin";
 
-$null = Install-Package -Name 'GitVersion.Portable' -ProviderName Chocolatey;
-$env:GitVersion = "$env:ChocolateyPath\lib\GitVersion.Portable.$(( Get-Package -Name GitVersion.Portable -ProviderName Chocolatey ).Version)\tools\GitVersion.exe";
-Write-Verbose "GitVersion path: $env:GitVersion";
-if ($PSCmdLet.ShouldProcess('GitVersion', 'Установить переменную окружения')) {
-    [System.Environment]::SetEnvironmentVariable( 'GitVersion', $env:GitVersion, [System.EnvironmentVariableTarget]::User );
-};
-
-$null = Install-Package -Name 'GitReleaseNotes.Portable' -ProviderName Chocolatey;
+& choco install GitVersion.Portable --confirm --failonstderr | Out-String -Stream | Write-Verbose;
+& choco install GitReleaseNotes.Portable --confirm --failonstderr | Out-String -Stream | Write-Verbose;
 
 if ( -not ( $env:APPVEYOR -eq 'True' ) ) {
 
-    $null = Install-Package -Name chocolatey -ProviderName Chocolatey;
-
-    if ( ( Get-Package -Name Git -ErrorAction SilentlyContinue ).count -eq 0 ) {
-        $null = Install-Package -Name 'git' -MinimumVersion '2.8' -ProviderName Chocolatey;
-    };
+    & choco install git --confirm --failonstderr | Out-String -Stream | Write-Verbose;
 
 };
 
-$null = Install-Package -Name 'cygwin' -ProviderName Chocolatey;
+& choco install cygwin --confirm --failonstderr | Out-String -Stream | Write-Verbose;
 $env:CygWin = Get-ItemPropertyValue `
     -Path HKLM:\SOFTWARE\Cygwin\setup `
     -Name rootdir `
