@@ -1,8 +1,8 @@
 image: WMF 5
 version: 1.0.0 (Build {build})
 
-environment: 
-  APPVEYORTOOL: C:\Program Files\AppVeyor\BuildAgent\appveyor.exe
+init:
+  - cmd: set PATH=%PATH%;%ProgramFiles%/AppVeyor/BuildAgent
 
 branches:
   except:
