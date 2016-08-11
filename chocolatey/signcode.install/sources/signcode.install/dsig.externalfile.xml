@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <files>
+    <file fileid="dsig" filename="dsig.exe" target="tools" url="http://download.microsoft.com/download/4/7/e/47e8e7fb-9441-4887-988f-e259a443052d/Dsig.EXE"/>
+  </files>  
+</package>

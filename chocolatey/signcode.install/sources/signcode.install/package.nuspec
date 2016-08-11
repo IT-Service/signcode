@@ -25,6 +25,9 @@ All release notes can be found on the GitHub site - https://github.com/IT-Servic
   </metadata>
   <files>
     <file src="chocolatey*.ps1" target="tools"/>
-    <file src="*.*" target="tools"/>
+    <file src="*.ignore" target="tools"/>
+    <file src="*.externalfile.xml" target="tools"/>
+    <file src="*.checksum.txt" target="tools"/>
+    <file src="signcodepwd.cmd" target="tools"/>
   </files>  
 </package>
