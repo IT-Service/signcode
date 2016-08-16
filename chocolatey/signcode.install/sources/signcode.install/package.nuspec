@@ -6,6 +6,7 @@
     <title>SignCode (Install)</title>
     <authors>Microsoft Corporation, Stephan Brenner</authors>
     <owners>Sergey S. Betke</owners>
+    <licenseUrl>https://raw.githubusercontent.com/IT-Service/signcode/master/LICENSE</licenseUrl>
     <projectUrl>https://www.microsoft.com/en-us/Typography/dsigningtool.aspx</projectUrl>
     <packageSourceUrl>https://github.com/IT-Service/signcode/</packageSourceUrl>
     <docsUrl>https://github.com/IT-Service/signcode/wiki</docsUrl>
