@@ -1,3 +1,12 @@
+chocolatey package `signcode`.
+
 Copyright © 2015-2016 Sergey S. Betke
 Author: Sergey S. Betke
 Licensed under the Apache License, Version 2.0
+
+Used:
+
+- OpenType Font Signing Tool;
+  EULA: https://www.microsoft.com/en-us/Typography/eula.aspx
+- Stephan Brenner Command line tool to automate Microsoft’s SignCode tool (signcode-pwd);
+  EULA: http://www.stephan-brenner.com/?page_id=710
